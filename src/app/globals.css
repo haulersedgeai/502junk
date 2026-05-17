@@ -1,26 +1,71 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-50: #fef2f3;
+  --color-brand-100: #fde2e4;
+  --color-brand-200: #fac9cd;
+  --color-brand-300: #f6a3a9;
+  --color-brand-400: #ef6f78;
+  --color-brand-500: #e23c47;
+  --color-brand-600: #c8102e;
+  --color-brand-700: #a30c26;
+  --color-brand-800: #861126;
+  --color-brand-900: #721425;
+  --color-brand-950: #3f060f;
+
+  --color-amber-bourbon: #d89b4a;
+  --color-amber-bourbon-dark: #b87f33;
+
+  --color-ink: #0f1115;
+  --color-ink-soft: #1a1d23;
+  --color-stone-warm: #f8f5f1;
+  --color-stone-mid: #e7e2db;
+  --color-stone-line: #d6cfc4;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-manrope), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f1115;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
+html, body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.text-balance { text-wrap: balance; }
+.text-pretty { text-wrap: pretty; }
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(15,17,21,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15,17,21,0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bg-noise {
+  background-image: radial-gradient(circle at 1px 1px, rgba(15,17,21,0.06) 1px, transparent 0);
+  background-size: 16px 16px;
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+.animate-accordion-down { animation: accordion-down 0.2s ease-out; }
+.animate-accordion-up { animation: accordion-up 0.2s ease-out; }
